@@ -12,6 +12,7 @@ then
     exit 1
 else
     echo "you are running with root user"
+fi
 
 VALIDATE(){
     if [ $? -eq 0 ]
