@@ -19,6 +19,7 @@ then
     exit 1
 else
     echo "you are running with root user" | tee -a $LOG_FILE
+fi
 
 VALIDATE(){
     if [ $? -eq 0 ]
