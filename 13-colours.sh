@@ -28,6 +28,7 @@ dnf list installed mysql
 if [ $? -ne 0 ]
 then
     echo "mysql is not installed....you can do it"
+    dnf install mysql -y
     VALIDATE $? "mysql"
 else
     echo "mysql is already installed... $Y nothing do it $N"
@@ -38,6 +39,7 @@ dnf list installed python3
 if [ $? -ne 0 ]
 then
     echo "python3 is not installed....you can do it"
+    dnf install python3 -y
     VALIDATE $? "python3"
 else
     echo "python3 is already installed...$Y nothing do it $N"
@@ -48,6 +50,7 @@ dnf list installed nginx
 if [ $? -ne 0 ]
 then
     echo "nginx is not installed....you can do it"
+    dnf install nginx -y
     VALIDATE $? "nginx"
 else
     echo "nginx is already installed...$Y nothing do it $N"
