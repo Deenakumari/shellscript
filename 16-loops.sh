@@ -20,6 +20,7 @@ then
     exit 1
 else
     echo "you are running with root user" | tee -a $LOG_FILE
+fi
 
 VALIDATE(){
     if [ $? -eq 0 ]
@@ -30,15 +31,17 @@ VALIDATE(){
         exit 1
     fi
 }
-for package in %@
-dnf list installed $package &>>$LOG_FILE
+for package in ${PACKAGES[@]}
+do
+    dnf list installed $package &>>$LOG_FILE
 
-if [ $? -ne 0 ]
-then
-    echo "$package is not installed....you can do it" | tee -a $LOG_FILE
-    dnf install $package &>>$LOG_FILE
-    VALIDATE $? "$package"
-else
-    echo -e "$package is already installed... $Y nothing do it $N" | tee -a $LOG_FILE
-fi
+    if [ $? -ne 0 ]
+    then
+        echo "$package is not installed....you can do it" | tee -a $LOG_FILE
+        dnf install $package &>>$LOG_FILE
+        VALIDATE $? "$package"
+    else
+        echo -e "$package is already installed... $Y nothing do it $N" | tee -a $LOG_FILE
+    fi
+done
 
