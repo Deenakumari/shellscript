@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-LOG_FOLDER="/vae/log/shellscript-log"
+LOG_FOLDER="/var/log/shellscript-log"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 SOURCE_DIR=/home/ec2-user/app-log
@@ -31,7 +31,7 @@ VALIDATE(){
 mkdir -p $LOG_FOLDER
 echo "script start excyting at : $(date)" | tee -a $LOG_FILE
 
-FILE_TO_DELETE=$(find . -name "*.log* -mtime +14)
+FILE_TO_DELETE=$(find $SOURCE_DIR -name "*.log* -mtime +14)
 
 while IFS= read -r filepath
 do  
