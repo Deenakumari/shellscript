@@ -31,7 +31,7 @@ VALIDATE(){
 mkdir -p $LOG_FOLDER
 echo "script start excyting at : $(date)" | tee -a $LOG_FILE
 
-FILE_TO_DELETE=$(find $SOURCE_DIR -name "*.log* -mtime +14)
+FILE_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
 
 while IFS= read -r filepath
 do  
